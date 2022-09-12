@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import 'mobx-react-lite/batchingForReactDom';
 // import Model from './models';
 import {
-  BrowserRouter as Router
+  HashRouter as Router
 } from 'react-router-dom';
 
 ReactDOM.render(
