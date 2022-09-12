@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
-import Model from './models';
+import 'mobx-react-lite/batchingForReactDom';
+// import Model from './models';
 import {
   BrowserRouter as Router
 } from 'react-router-dom';
 
 ReactDOM.render(
-    <Router>
-      <App />
-    </Router>,
+  <Router>
+    <App />
+  </Router>,
   document.getElementById('root')
 );
 

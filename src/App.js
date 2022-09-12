@@ -1,8 +1,9 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, Fragment } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Loading from './components/Loading';
+
 
 import {
   Switch,
@@ -10,9 +11,7 @@ import {
 } from 'react-router-dom';
 
 console.log(Loading)
-// import Home from './pages/Home';
-// import History from './pages/History';
-// import About from './pages/About';
+
 
 const Home = lazy(() => import('./pages/Home'));
 const History = lazy(() => import('./pages/History'));
@@ -30,10 +29,14 @@ function App() {
         <Suspense fallback={<Loading />}>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/history" component={History} />
-            <Route path="/about" component={About} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <Fragment>
+              <div className='pad'>
+                <Route path="/history" component={History} />
+                <Route path="/about" component={About} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+              </div>
+            </Fragment>
           </Switch>
         </Suspense>
       </main>

@@ -1,10 +1,12 @@
-import AV, { Query, User } from 'leancloud-storage';
+import AV, { User } from 'leancloud-storage';
+
 
 AV.init({
-  appId: "UqBaAsQMqOQB3rLwNGLTKtOF-gzGzoHsz",
-  appKey: "uv9EyQmkgX7UjUt4TeVUBhVa",
-  serverURL: "https://uqbaasqm.lc-cn-n1-shared.com"
+  appId: "KZH2gZRBBs227CVW1IX6RN5F-gzGzoHsz",
+  appKey: "3ilZntc1dnNLC8FVF2Gw4xVa",
+  serverURL: "https://kzh2gzrb.lc-cn-n1-shared.com"
 });
+
 
 const Auth = {
   register(username, password) {
@@ -39,18 +41,30 @@ const Uploader = {
     const item = new AV.Object('Image');
     const avFile = new AV.File(filename, file);
     item.set('filename', filename);
-    item.set('owner', AV.User.current());
+    item.set('owner', User.current());
+    console.log(User.current());
     item.set('url', avFile);
     return new Promise((resolve, reject) => {
       item.save().then(serverFile => resolve(serverFile), error => reject(error));
     });
+  },
+
+  find({ page = 0, limit = 10 }) {
+    const query = new AV.Query('Image');
+    query.include('owner');
+    query.limit(limit);
+    query.skip(page * limit);
+    query.descending('createdAt');
+    query.equalTo('owner', AV.User.current());
+    return new Promise((resolve, reject) => {
+      query.find()
+        .then(results => resolve(results))
+        .catch(error => reject(error))
+    });
   }
-}
+};
 
-
-
-
-
+window.Uploader = Uploader;
 
 export {
   Auth,

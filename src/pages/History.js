@@ -1,9 +1,11 @@
 import React from 'react';
+import List from '../components/List';
 
 function History() {
   return (
     <>
-      <h1>History</h1>
+      <h2>History</h2>
+      <List></List>
     </>
   );
 }
