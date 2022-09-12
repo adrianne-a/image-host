@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## ImageHost
 
+![homepage](./README/homepage.png)
+
 ## 项目介绍
 
 这是一个简单的图床，实现了用户的登录，注册，以及上传图片，查看历史记录等基本功能。
@@ -11,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### 在线预览
 
-### 本地预览
+[https://adrianne-a.github.io/image-host/](https://adrianne-a.github.io/image-host/)
 
 ## Available Scripts
 
